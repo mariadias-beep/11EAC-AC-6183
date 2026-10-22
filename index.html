@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de Sistemas Operativos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><img src="logo.png" width="50" height="40">
+ Manual de Sistemas Operativos</div>
+  <button class="menu-btn" onclick="document.body.classList.toggle('menu-open')">☰</button>
+</header>
+
+<div class="layout">
+<aside class="sidebar">
+  <h3>Conteúdos</h3>
+  <nav>
+    <a href="#inicio">🏠 Início</a>
+    <a href="#so">1. Introdução aos SO</a>
+    <a href="#hardware">2. SO e Hardware</a>
+    <a href="#tipos">3. Tipos de SO</a>
+    <a href="#texto-grafico">4. Texto vs. Gráfico</a>
+    <a href="#comandos">5. Comandos básicos</a>
+    <a href="#ficheiros-cli">6. Ficheiros na linha de comandos</a>
+    <a href="#utilizadores">7. Utilizadores e permissões</a>
+    <a href="#admin-cli">8. Administração em modo texto</a>
+    <a href="#instalacao-cli">9. Instalação em modo texto</a>
+    <a href="#config-cli">10. Configuração em modo texto</a>
+    <a href="#ambiente-grafico">11. Ambiente gráfico</a>
+    <a href="#ficheiros-gui">12. Ficheiros e aplicações</a>
+    <a href="#instalacao-gui">13. Instalação em modo gráfico</a>
+    <a href="#config-gui">14. Configuração gráfica</a>
+    <a href="#admin-gui">15. Administração e manutenção</a>
+    <a href="#seguranca">16. Segurança</a>
+    <a href="#avaliacao">17. Consolidação e avaliação</a>
+    <a href="#comandos-ref">📌 Tabela de comandos</a>
+  </nav>
+</aside>
+
+<main class="content">
+<section id="inicio" class="hero">
+  <span class="badge">Manual de apoio ao aluno - Prof: Maria Dias</span>
+  <h1>Sistemas Operativos</h1>
+  <p>Conceitos, hardware, linha de comandos, ambiente gráfico, administração, instalação, configuração e segurança.</p>
+  <div class="hero-grid">
+    <div><strong>🎯 Objetivo</strong><br>Compreender e utilizar um sistema operativo de forma segura.</div>
+    <div><strong>🧪 Metodologia</strong><br>Aprender → observar → executar → testar → resolver.</div>
+    <div><strong>🛠️ Prática</strong><br>As tarefas podem ser realizadas numa máquina virtual ou num computador de laboratório.</div>
+  </div>
+</section>
+
+<section id="so" class="topic">
+<h2>1. Introdução aos sistemas operativos</h2>
+<p>Um <strong>sistema operativo (SO)</strong> é o software fundamental que gere os recursos de um computador e permite ao utilizador executar aplicações.</p>
+<div class="cards">
+<div class="card"><h3>⚙️ Gestão de hardware</h3><p>Controla CPU, memória, armazenamento e periféricos.</p></div>
+<div class="card"><h3>📁 Gestão de ficheiros</h3><p>Organiza ficheiros, pastas e dispositivos de armazenamento.</p></div>
+<div class="card"><h3>👤 Gestão de utilizadores</h3><p>Controla contas, sessões, grupos e permissões.</p></div>
+<div class="card"><h3>🛡️ Segurança</h3><p>Ajuda a proteger dados, contas e recursos do sistema.</p></div>
+</div>
+<h3>Exemplos</h3>
+<ul><li>Windows — computadores pessoais e profissionais.</li><li>Linux — servidores, computadores e dispositivos.</li><li>macOS — computadores Apple.</li><li>Android — smartphones e tablets.</li></ul>
+<details><summary>📝 Tarefa 1 — Identificar funções de um SO</summary>
+<p><strong>Enunciado:</strong> Indica quatro funções de um sistema operativo e apresenta dois exemplos de sistemas operativos.</p>
+<p><strong>Resolução exemplo:</strong> Gestão do hardware, gestão de ficheiros, gestão de utilizadores e gestão de processos. Exemplos: Windows e Linux.</p>
+</details>
+</section>
+
+<section id="hardware" class="topic">
+<h2>2. O sistema operativo e o hardware</h2>
+<p>O SO funciona como uma camada de ligação entre as aplicações/utilizador e o hardware.</p>
+<div class="diagram">👤 Utilizador → 🖥️ Aplicações → ⚙️ Sistema Operativo → 🔧 Hardware</div>
+<table><tr><th>Componente</th><th>Função</th><th>Interação com o SO</th></tr>
+<tr><td>CPU</td><td>Executa instruções</td><td>O SO distribui tempo de processamento</td></tr>
+<tr><td>RAM</td><td>Armazena dados temporários</td><td>O SO gere a memória utilizada pelos programas</td></tr>
+<tr><td>Disco/SSD</td><td>Armazena dados</td><td>O SO gere ficheiros e partições</td></tr>
+<tr><td>GPU</td><td>Processa gráficos</td><td>É utilizada através de drivers</td></tr>
+<tr><td>Periféricos</td><td>Entrada/saída</td><td>São controlados através de drivers</td></tr>
+</table>
+<details><summary>📝 Tarefa 2 — Hardware e software</summary>
+<p><strong>Enunciado:</strong> Um aluno abre um editor de texto e escreve uma frase. Identifica pelo menos quatro componentes de hardware envolvidos.</p>
+<p><strong>Resolução exemplo:</strong> CPU processa instruções; RAM mantém o programa e dados em utilização; teclado fornece entrada; monitor apresenta a informação; SSD pode armazenar o ficheiro.</p>
+</details>
+</section>
+
+<section id="tipos" class="topic">
+<h2>3. Tipos de sistemas operativos</h2>
+<p>Um sistema pode ser classificado de acordo com o número de utilizadores, tarefas, dispositivos e outras características.</p>
+<table><tr><th>Tipo</th><th>Descrição</th><th>Exemplo</th></tr>
+<tr><td>Monoutilizador</td><td>Orientado para utilização por um utilizador de cada vez.</td><td>Alguns sistemas pessoais/ambientes específicos</td></tr>
+<tr><td>Multiutilizador</td><td>Permite vários utilizadores com contas e permissões diferentes.</td><td>Linux/Unix e sistemas de servidor</td></tr>
+</table>
+<p><strong>Sessão:</strong> período durante o qual um utilizador está autenticado e utiliza os recursos do sistema.</p>
+<details><summary>📝 Tarefa 3 — Contas e sessões</summary>
+<p><strong>Enunciado:</strong> Explica a diferença entre utilizador e sessão.</p>
+<p><strong>Resolução:</strong> O utilizador é uma identidade/conta com credenciais e permissões. A sessão é o período de utilização iniciado depois da autenticação.</p>
+</details>
+</section>
+
+<section id="texto-grafico" class="topic">
+<h2>4. Sistemas operativos em modo texto e modo gráfico</h2>
+<div class="compare">
+<div><h3>⌨️ Modo texto</h3><ul><li>Comandos escritos</li><li>Automatização fácil</li><li>Baixo consumo de recursos</li><li>Exige conhecimento da sintaxe</li></ul></div>
+<div><h3>🖱️ Modo gráfico</h3><ul><li>Janelas e menus</li><li>Mais intuitivo para iniciantes</li><li>Facilita tarefas visuais</li><li>Pode consumir mais recursos</li></ul></div>
+</div>
+<details><summary>📝 Tarefa 4 — Escolher o ambiente</summary>
+<p><strong>Enunciado:</strong> Para administrar remotamente um servidor, qual ambiente pode ser particularmente útil?</p>
+<p><strong>Resolução exemplo:</strong> O modo texto/terminal é muito útil porque permite administrar o sistema através de SSH, executar comandos rapidamente e automatizar tarefas.</p>
+</details>
+</section>
+
+<section id="comandos" class="topic">
+<h2>5. Comandos básicos em sistemas operativos modo texto</h2>
+<p>Os exemplos seguintes utilizam comandos Linux. Em Windows, os equivalentes podem ser diferentes.</p>
+<table><tr><th>Objetivo</th><th>Linux</th><th>Windows CMD</th></tr>
+<tr><td>Ver localização</td><td><code>pwd</code></td><td><code>cd</code></td></tr>
+<tr><td>Listar conteúdo</td><td><code>ls</code></td><td><code>dir</code></td></tr>
+<tr><td>Mudar de pasta</td><td><code>cd pasta</code></td><td><code>cd pasta</code></td></tr>
+<tr><td>Criar pasta</td><td><code>mkdir documentos</code></td><td><code>mkdir documentos</code></td></tr>
+<tr><td>Copiar</td><td><code>cp origem destino</code></td><td><code>copy origem destino</code></td></tr>
+<tr><td>Mover/renomear</td><td><code>mv origem destino</code></td><td><code>move origem destino</code></td></tr>
+<tr><td>Eliminar ficheiro</td><td><code>rm ficheiro.txt</code></td><td><code>del ficheiro.txt</code></td></tr>
+</table>
+<details><summary>📝 Tarefa 5 — Criar uma estrutura de pastas</summary>
+<p><strong>Objetivo:</strong> criar <code>SO</code>, dentro dela <code>Textos</code> e <code>Imagens</code>.</p>
+<p><strong>Resolução Linux:</strong></p>
+<pre>mkdir SO
+cd SO
+mkdir Textos Imagens
+ls</pre>
+<p><strong>Resultado esperado:</strong> aparecem as pastas <code>Textos</code> e <code>Imagens</code>.</p>
+</details>
+</section>
+
+<section id="ficheiros-cli" class="topic">
+<h2>6. Gestão de ficheiros e diretórios através da linha de comandos</h2>
+<p><strong>Caminho absoluto</strong> indica a localização completa. <strong>Caminho relativo</strong> parte da localização atual.</p>
+<div class="callout"><strong>Exemplo:</strong> <code>/home/aluno/documentos/trabalho.txt</code> é um caminho absoluto. <code>documentos/trabalho.txt</code> pode ser relativo.</div>
+<details><summary>📝 Tarefa 6 — Copiar e pesquisar um ficheiro</summary>
+<p><strong>Enunciado:</strong> Cria <code>trabalho.txt</code>, copia-o para <code>backup</code> e procura-o no diretório pessoal.</p>
+<p><strong>Resolução Linux:</strong></p>
+<pre>touch trabalho.txt
+mkdir backup
+cp trabalho.txt backup/
+find ~ -name "trabalho.txt"</pre>
+</details>
+</section>
+
+<section id="utilizadores" class="topic">
+<h2>7. Utilizadores, grupos e permissões</h2>
+<p>Os sistemas operativos usam contas e permissões para controlar o acesso aos recursos.</p>
+<table><tr><th>Permissão</th><th>Letra</th><th>Significado</th></tr>
+<tr><td>Leitura</td><td>r</td><td>Read</td></tr>
+<tr><td>Escrita</td><td>w</td><td>Write</td></tr>
+<tr><td>Execução</td><td>x</td><td>Execute</td></tr>
+</table>
+<details><summary>📝 Tarefa 7 — Interpretar permissões</summary>
+<p><strong>Enunciado:</strong> Interpreta <code>-rw-r--r--</code>.</p>
+<p><strong>Resolução:</strong> O proprietário pode ler e escrever; o grupo pode ler; os restantes utilizadores podem ler. Não existe permissão de execução.</p>
+</details>
+</section>
+
+<section id="admin-cli" class="topic">
+<h2>8. Administração de sistemas operativos em modo texto</h2>
+<p>O administrador precisa de consultar processos, serviços, armazenamento, rede e informação do sistema.</p>
+<table><tr><th>Tarefa</th><th>Exemplo Linux</th></tr>
+<tr><td>Ver processos</td><td><code>ps</code> ou <code>top</code></td></tr>
+<tr><td>Ver memória</td><td><code>free -h</code></td></tr>
+<tr><td>Ver disco</td><td><code>df -h</code></td></tr>
+<tr><td>Informação do sistema</td><td><code>uname -a</code></td></tr>
+<tr><td>Serviços</td><td><code>systemctl status nome-servico</code></td></tr>
+<tr><td>Privilégios administrativos</td><td><code>sudo comando</code></td></tr>
+</table>
+<details><summary>📝 Tarefa 8 — Diagnóstico rápido</summary>
+<p><strong>Enunciado:</strong> Um computador está com pouco espaço em disco. Que comando podes usar primeiro?</p>
+<p><strong>Resolução:</strong> <code>df -h</code> permite consultar o espaço utilizado e disponível nos sistemas de ficheiros.</p>
+</details>
+</section>
+
+<section id="instalacao-cli" class="topic">
+<h2>9. Instalação de um sistema operativo em modo texto</h2>
+<ol><li>Definir objetivo e requisitos.</li><li>Escolher a distribuição/versão.</li><li>Criar suporte de instalação.</li><li>Configurar a máquina virtual ou computador.</li><li>Instalar o sistema.</li><li>Criar utilizador e palavra-passe.</li><li>Configurar rede.</li><li>Atualizar o sistema.</li></ol>
+<div class="warning"><strong>⚠️ Atenção:</strong> numa instalação real, operações de particionamento podem apagar dados. Em contexto escolar, recomenda-se uma máquina virtual.</div>
+<details><summary>📝 Tarefa 9 — Plano de instalação</summary>
+<p><strong>Enunciado:</strong> Cria um plano de instalação de Ubuntu Server numa máquina virtual.</p>
+<p><strong>Resolução exemplo:</strong> Criar VM → definir RAM/CPU/disco → associar ISO → iniciar instalação → criar utilizador → configurar rede → atualizar pacotes → testar ligação.</p>
+</details>
+</section>
+
+<section id="config-cli" class="topic">
+<h2>10. Configuração inicial de um sistema operativo em modo texto</h2>
+<p>Depois da instalação, devem ser verificadas as definições essenciais.</p>
+<ul><li>Nome do computador/hostname</li><li>Utilizadores e palavras-passe</li><li>Configuração de rede</li><li>Data e hora</li><li>Atualizações</li><li>Software necessário</li></ul>
+<details><summary>📝 Tarefa 10 — Atualizar e instalar software</summary>
+<p><strong>Enunciado:</strong> Num Ubuntu/Debian, atualiza a lista de pacotes e instala o editor <code>nano</code>.</p>
+<p><strong>Resolução:</strong></p>
+<pre>sudo apt update
+sudo apt install nano</pre>
+</details>
+</section>
+
+<section id="ambiente-grafico" class="topic">
+<h2>11. Sistemas operativos em modo gráfico</h2>
+<p>O ambiente gráfico disponibiliza uma interface visual para executar tarefas.</p>
+<div class="cards">
+<div class="card"><h3>🪟 Janelas</h3><p>Apresentam aplicações e documentos.</p></div>
+<div class="card"><h3>📁 Gestor de ficheiros</h3><p>Permite navegar e organizar dados.</p></div>
+<div class="card"><h3>⚙️ Definições</h3><p>Permitem configurar o sistema.</p></div>
+<div class="card"><h3>📌 Barra de tarefas</h3><p>Facilita o acesso a aplicações e janelas.</p></div>
+</div>
+<details><summary>📝 Tarefa 11 — Explorar o ambiente</summary>
+<p><strong>Enunciado:</strong> Abre o gestor de ficheiros e identifica: diretório pessoal, barra de navegação, área de conteúdo e definições.</p>
+<p><strong>Resolução exemplo:</strong> O aluno deve indicar corretamente cada componente e explicar a sua função.</p>
+</details>
+</section>
+
+<section id="ficheiros-gui" class="topic">
+<h2>12. Gestão de ficheiros e aplicações em modo gráfico</h2>
+<p>As operações mais comuns são criar, copiar, mover, renomear e eliminar.</p>
+<details><summary>📝 Tarefa 12 — Organização de documentos</summary>
+<p><strong>Enunciado:</strong> No ambiente gráfico, cria a pasta <code>ProjetoSO</code> com subpastas <code>Documentos</code>, <code>Imagens</code> e <code>Backup</code>. Cria um ficheiro de texto e copia-o para Backup.</p>
+<p><strong>Resolução exemplo:</strong> Criar pasta → abrir pasta → criar três subpastas → criar ficheiro em Documentos → selecionar ficheiro → Copiar → abrir Backup → Colar.</p>
+</details>
+</section>
+
+<section id="instalacao-gui" class="topic">
+<h2>13. Instalação de um sistema operativo em modo gráfico</h2>
+<p>Uma instalação gráfica apresenta assistentes para idioma, teclado, disco, utilizador, rede e outras opções.</p>
+<details><summary>📝 Tarefa 13 — Sequência de instalação</summary>
+<p><strong>Enunciado:</strong> Ordena: criar utilizador; selecionar idioma; particionar disco; configurar teclado; instalar ficheiros.</p>
+<p><strong>Resolução exemplo:</strong> Idioma → teclado → disco/partições → instalação dos ficheiros → criação/configuração do utilizador. A ordem exata pode variar conforme o instalador.</p>
+</details>
+</section>
+
+<section id="config-gui" class="topic">
+<h2>14. Configuração de um sistema operativo em modo gráfico</h2>
+<ul><li>Rede Wi-Fi/Ethernet</li><li>Dispositivos e periféricos</li><li>Atualizações</li><li>Idioma e região</li><li>Data e hora</li><li>Contas de utilizadores</li><li>Personalização</li></ul>
+<details><summary>📝 Tarefa 14 — Configurar uma máquina</summary>
+<p><strong>Enunciado:</strong> Configura uma máquina para um novo utilizador: define idioma PT-PT, data/hora corretas, rede e atualizações.</p>
+<p><strong>Resolução exemplo:</strong> Abrir Definições → Região/Idioma → Data e hora → Rede → Atualizações → reiniciar se necessário → testar Internet.</p>
+</details>
+</section>
+
+<section id="admin-gui" class="topic">
+<h2>15. Administração e manutenção em modo gráfico</h2>
+<p>As ferramentas gráficas permitem acompanhar processos, gerir utilizadores, armazenamento, atualizações e dispositivos.</p>
+<details><summary>📝 Tarefa 15 — Diagnóstico de desempenho</summary>
+<p><strong>Enunciado:</strong> Um programa deixou de responder. Como podes verificar o problema?</p>
+<p><strong>Resolução exemplo:</strong> Abrir o Gestor de Tarefas/Monitor do Sistema, identificar o processo que não responde, verificar CPU/RAM e, se necessário, terminar a aplicação.</p>
+</details>
+</section>
+
+<section id="seguranca" class="topic">
+<h2>16. Segurança e administração de sistemas operativos</h2>
+<div class="security-grid">
+<div><h3>🔐 Contas</h3><p>Utilizar palavras-passe fortes e evitar partilhar credenciais.</p></div>
+<div><h3>🔄 Atualizações</h3><p>Manter o SO e aplicações atualizados.</p></div>
+<div><h3>💾 Backups</h3><p>Manter cópias de segurança dos dados importantes.</p></div>
+<div><h3>🛡️ Proteção</h3><p>Utilizar firewall, proteção contra malware e práticas seguras.</p></div>
+</div>
+<details><summary>📝 Tarefa 16 — Plano de segurança</summary>
+<p><strong>Enunciado:</strong> Cria cinco regras de segurança para um computador escolar.</p>
+<p><strong>Resolução exemplo:</strong> 1) Usar palavra-passe forte; 2) não partilhar credenciais; 3) atualizar o SO; 4) realizar backups; 5) não instalar software de fontes desconhecidas.</p>
+</details>
+</section>
+
+<section id="avaliacao" class="topic">
+<h2>17. Consolidação e avaliação prática</h2>
+<p>Realiza a atividade final numa máquina virtual. O objetivo é demonstrar competências em modo texto e modo gráfico.</p>
+<div class="task-final">
+<h3>🏆 Desafio final</h3>
+<ol>
+<li>Criar uma máquina virtual com um sistema operativo.</li>
+<li>Criar um utilizador normal.</li>
+<li>Identificar CPU, RAM e armazenamento.</li>
+<li>Criar a estrutura <code>Projeto/Documentos/Backup</code>.</li>
+<li>Criar e copiar um ficheiro.</li>
+<li>Consultar informação do sistema.</li>
+<li>Verificar o estado da rede.</li>
+<li>Atualizar o sistema.</li>
+<li>Aceder ao ambiente gráfico e repetir uma operação de gestão de ficheiros.</li>
+<li>Aplicar pelo menos três medidas de segurança.</li>
+</ol>
+<h3>Critérios sugeridos — 20 valores</h3>
+<table><tr><th>Critério</th><th>Valores</th></tr>
+<tr><td>Compreensão dos conceitos</td><td>4</td></tr>
+<tr><td>Utilização da linha de comandos</td><td>5</td></tr>
+<tr><td>Gestão de ficheiros/utilizadores</td><td>3</td></tr>
+<tr><td>Configuração e administração</td><td>4</td></tr>
+<tr><td>Segurança e autonomia</td><td>4</td></tr>
+<tr><th>Total</th><th>20</th></tr>
+</table>
+</div>
+</section>
+
+<section id="comandos-ref" class="topic">
+<h2>📌 Tabela de referência rápida — Linux</h2>
+<table><tr><th>Comando</th><th>Função</th><th>Exemplo</th></tr>
+<tr><td><code>pwd</code></td><td>Mostra a localização atual</td><td><code>pwd</code></td></tr>
+<tr><td><code>ls</code></td><td>Lista ficheiros/pastas</td><td><code>ls -la</code></td></tr>
+<tr><td><code>cd</code></td><td>Muda de diretório</td><td><code>cd Documentos</code></td></tr>
+<tr><td><code>mkdir</code></td><td>Cria diretório</td><td><code>mkdir Projeto</code></td></tr>
+<tr><td><code>touch</code></td><td>Cria ficheiro vazio</td><td><code>touch teste.txt</code></td></tr>
+<tr><td><code>cp</code></td><td>Copia</td><td><code>cp a.txt backup/</code></td></tr>
+<tr><td><code>mv</code></td><td>Move/renomeia</td><td><code>mv a.txt b.txt</code></td></tr>
+<tr><td><code>rm</code></td><td>Elimina</td><td><code>rm a.txt</code></td></tr>
+<tr><td><code>find</code></td><td>Pesquisa</td><td><code>find ~ -name "*.txt"</code></td></tr>
+<tr><td><code>whoami</code></td><td>Mostra utilizador atual</td><td><code>whoami</code></td></tr>
+<tr><td><code>ip</code></td><td>Consulta configuração de rede</td><td><code>ip addr</code></td></tr>
+<tr><td><code>df</code></td><td>Consulta espaço em disco</td><td><code>df -h</code></td></tr>
+<tr><td><code>free</code></td><td>Consulta memória</td><td><code>free -h</code></td></tr>
+<tr><td><code>ps</code></td><td>Lista processos</td><td><code>ps aux</code></td></tr>
+<tr><td><code>sudo</code></td><td>Executa com privilégios administrativos</td><td><code>sudo apt update</code></td></tr>
+</table>
+</section>
+
+<footer>
+<p>Manual de Sistemas Operativos · Material de apoio pedagógico · PT-PT</p>
+<p><a href="#inicio">↑ Voltar ao início</a></p>
+</footer>
+</main>
+</div>
+</body>
+</html>

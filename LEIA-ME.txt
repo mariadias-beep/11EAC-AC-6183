@@ -1,0 +1,21 @@
+MANUAL DE SISTEMAS OPERATIVOS
+==============================
+
+Como utilizar:
+1. Extraia o ficheiro ZIP.
+2. Abra index.html num navegador (Chrome, Edge, Firefox, etc.).
+3. Utilize o menu lateral para navegar pelos conteúdos.
+4. Em dispositivos móveis, use o botão ☰.
+5. Clique nas tarefas para abrir o exemplo de resolução.
+
+O manual inclui:
+- 17 temas/conteúdos
+- exemplos práticos
+- tarefas com resolução
+- comandos Linux e equivalentes Windows CMD
+- desafio final com avaliação de 0 a 20 valores
+- design responsivo para computador, tablet e telemóvel
+
+Nota pedagógica:
+Os exemplos de comandos são principalmente para Linux. As tarefas de instalação devem,
+preferencialmente, ser realizadas numa máquina virtual em contexto escolar.
