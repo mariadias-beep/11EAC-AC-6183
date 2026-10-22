@@ -1,12 +1,6 @@
 MANUAL DE SISTEMAS OPERATIVOS
 ==============================
 
-Como utilizar:
-1. Extraia o ficheiro ZIP.
-2. Abra index.html num navegador (Chrome, Edge, Firefox, etc.).
-3. Utilize o menu lateral para navegar pelos conteúdos.
-4. Em dispositivos móveis, use o botão ☰.
-5. Clique nas tarefas para abrir o exemplo de resolução.
 
 O manual inclui:
 - 17 temas/conteúdos
