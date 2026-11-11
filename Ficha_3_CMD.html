@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ficha preenchível – Comandos básicos do Windows CMD</title>
+<style>
+:root{--navy:#173b63;--blue:#245b8f;--pale:#edf4fa;--line:#cbd5df;--ink:#263445;--green:#eaf5ee;--amber:#fff4df}
+*{box-sizing:border-box}
+body{margin:0;background:#e9eef3;color:var(--ink);font:15px/1.5 Arial,sans-serif}
+.toolbar{max-width:980px;margin:18px auto;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;padding:0 12px}
+button{border:0;border-radius:6px;padding:11px 17px;background:var(--navy);color:#fff;font-weight:bold;cursor:pointer}
+button.secondary{background:#52677c}
+.sheet{max-width:980px;margin:0 auto 30px;background:#fff;padding:42px 52px;box-shadow:0 3px 18px #0001}
+header{border-bottom:4px solid var(--navy);padding-bottom:17px;margin-bottom:22px}
+h1{color:var(--navy);font-size:29px;line-height:1.2;margin:0}
+.subtitle{font-size:19px;color:#45617d;margin:5px 0}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tag{background:var(--pale);color:var(--navy);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:bold}
+.student{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:18px 0}
+label.field-label{display:block;font-weight:bold;font-size:13px}
+input[type=text],input[type=date],input[type=number],textarea{font:inherit;color:var(--ink);border:1px solid #aebdca;border-radius:5px;padding:8px;width:100%;background:#fff}
+.student input{margin-top:4px}
+textarea{min-height:54px;resize:vertical;display:block;margin-top:6px}
+textarea.short{min-height:42px}
+textarea.long{min-height:85px}
+h2{font-size:21px;color:var(--navy);border-bottom:2px solid var(--line);padding-bottom:6px;margin:30px 0 12px}
+h3{font-size:17px;color:var(--blue);margin:22px 0 8px}
+p{margin:8px 0}
+.objectives,.note,.warning,.goal{padding:13px 16px;border-radius:5px;margin:12px 0}
+.objectives{background:var(--pale);border-left:5px solid var(--blue)}
+.note,.goal{background:var(--green);border-left:5px solid #4c9564}
+.warning{background:var(--amber);border-left:5px solid #d89a25}
+table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top}
+th{background:var(--navy);color:white}
+tr:nth-child(even) td{background:#f8fafc}
+code,pre,.tree{font-family:Consolas,"Courier New",monospace}
+code{background:#edf1f5;padding:2px 5px;border-radius:3px;color:#183c60}
+pre{background:#172331;color:#e9f1fa;padding:12px 15px;border-radius:6px;white-space:pre-wrap;overflow-wrap:anywhere;margin:9px 0}
+.tree{background:#f7f9fb;border:1px solid var(--line);padding:13px 18px;border-radius:6px;white-space:pre-wrap;line-height:1.8}
+.question{margin:10px 0 14px}
+.question label{font-weight:600;display:block}
+.checks{list-style:none;padding:0}
+.checks li{margin:9px 0}
+.checks input{width:17px;height:17px;vertical-align:middle;margin-right:7px}
+.score-input{max-width:100px}
+.totalbox{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--pale);padding:13px;border-radius:6px;margin-top:12px}
+.totalbox strong{color:var(--navy)}
+#total{font-size:24px;font-weight:bold;color:var(--navy);min-width:100px}
+.small{font-size:12px;color:#5e6e7d}
+.footer{border-top:1px solid var(--line);margin-top:30px;padding-top:12px;font-size:12px;color:#647487}
+@media(max-width:700px){.sheet{padding:24px 16px;margin:0}.student{grid-template-columns:1fr}h1{font-size:25px}.toolbar{justify-content:center}}
+@media print{
+ @page{size:A4;margin:13mm}
+ body{background:#fff;font-size:10.5pt}
+ .toolbar{display:none!important}
+ .sheet{max-width:none;margin:0;padding:0;box-shadow:none}
+ input,textarea{border:1px solid #777!important;background:#fff!important;color:#000!important}
+ textarea{resize:none;overflow:visible}
+ h2,h3{break-after:avoid}
+ pre,.tree,table,.objectives,.note,.warning,.goal{break-inside:avoid}
+ .question{break-inside:avoid}
+ .score-input{max-width:85px}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+ <button type="button" class="secondary" onclick="limparFicha()">Limpar respostas</button>
+ <button type="button" onclick="window.print()">Imprimir / Guardar em PDF</button>
+</div>
+
+<main class="sheet">
+<header>
+ <h1>Ficha de Trabalho - 11º EAC</h1>
+ <p class="subtitle"><strong>Comandos básicos do Windows – Modo Texto (CMD)</strong></p>
+ <div class="tags"><span class="tag">EPG - Professora Maria Dias</span><span class="tag">Windows</span><span class="tag">Linha de Comandos</span><span class="tag">90 minutos</span></div>
+</header>
+
+<div class="student">
+ <label class="field-label">Nome do aluno<input type="text" id="aluno" placeholder="Escreve o teu nome"></label>
+ <label class="field-label">Turma<input type="text" id="turma" placeholder="Turma"></label>
+ <label class="field-label">Data<input type="date" id="data"></label>
+</div>
+
+<section class="objectives"><strong>Objetivos de aprendizagem</strong>
+<ul>
+<li>Abrir e utilizar a Linha de Comandos (CMD).</li>
+<li>Navegar entre diretórios e consultar o seu conteúdo.</li>
+<li>Criar pastas e ficheiros.</li>
+<li>Copiar, mover, renomear e eliminar ficheiros e pastas.</li>
+<li>Utilizar comandos básicos do Windows em modo texto.</li>
+</ul></section>
+
+<h2>1. Conhecer os comandos</h2>
+<p>Consulta a tabela antes de iniciares as tarefas.</p>
+<table><thead><tr><th>Comando</th><th>Função</th></tr></thead><tbody>
+<tr><td><code>dir</code></td><td>Lista ficheiros e pastas do diretório atual.</td></tr>
+<tr><td><code>cd</code></td><td>Mostra ou altera o diretório atual.</td></tr>
+<tr><td><code>cd ..</code></td><td>Volta à pasta anterior (pasta acima).</td></tr>
+<tr><td><code>cd \</code></td><td>Vai para a raiz da unidade atual.</td></tr>
+<tr><td><code>mkdir</code> / <code>md</code></td><td>Cria uma pasta.</td></tr>
+<tr><td><code>echo</code></td><td>Escreve texto; com <code>&gt;</code> permite criar um ficheiro.</td></tr>
+<tr><td><code>type</code></td><td>Mostra o conteúdo de um ficheiro de texto.</td></tr>
+<tr><td><code>copy</code></td><td>Copia ficheiros.</td></tr>
+<tr><td><code>move</code></td><td>Move ficheiros ou pastas.</td></tr>
+<tr><td><code>ren</code></td><td>Altera o nome de um ficheiro ou pasta.</td></tr>
+<tr><td><code>del</code></td><td>Elimina ficheiros.</td></tr>
+<tr><td><code>rmdir</code></td><td>Elimina uma pasta vazia.</td></tr>
+<tr><td><code>cls</code></td><td>Limpa o ecrã da Linha de Comandos.</td></tr>
+</tbody></table>
+
+<h2>2. Preparação do exercício</h2>
+<ol><li>Abre o menu Iniciar do Windows.</li><li>Escreve <code>cmd</code> e abre a aplicação <strong>Linha de Comandos</strong>.</li><li>Cria a pasta de trabalho e entra nela:</li></ol>
+<pre>mkdir C:\Exercicio_CMD
+cd C:\Exercicio_CMD</pre>
+<div class="note">Estás agora dentro da tua pasta de trabalho. Realiza as tarefas seguintes nesta pasta, salvo indicação em contrário.</div>
+
+<h2>3. Parte prática – Vamos trabalhar!</h2>
+<h3>Tarefa 1 – Criar pastas</h3>
+<p>Cria a seguinte estrutura dentro de <code>C:\Exercicio_CMD</code>:</p>
+<div class="tree">Exercicio_CMD
+├── Documentos
+├── Imagens
+└── Backup</div>
+<pre>mkdir Documentos
+mkdir Imagens
+mkdir Backup
+dir</pre>
+<div class="question"><label>1. Que comando utilizaste para criar as pastas?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>2. Que informação apresenta o comando <code>dir</code>?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>3. Quantas pastas criaste?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+
+<h3>Tarefa 2 – Navegar entre pastas</h3>
+<p>Executa os comandos, um de cada vez:</p>
+<pre>cd Documentos
+cd
+cd ..
+cd Imagens
+cd ..</pre>
+<div class="question"><label>1. Para que serve o comando <code>cd</code>?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>2. O que acontece quando executas <code>cd ..</code>?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>3. Que comando permite saber em que diretório estás?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+
+<h3>Tarefa 3 – Criar ficheiros</h3>
+<p>Entra na pasta Documentos e cria três ficheiros:</p>
+<pre>cd Documentos
+echo O meu primeiro ficheiro &gt; trabalho.txt
+echo Este e um exercicio de Windows &gt; notas.txt
+echo Sistemas Operativos &gt; disciplina.txt
+dir
+type trabalho.txt</pre>
+<div class="question"><label>1. Quantos ficheiros criaste?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>2. Para que serve o comando <code>echo</code>?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>3. Para que serve o comando <code>type</code>?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>4. Qual é a extensão dos ficheiros criados?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+
+<h3>Tarefa 4 – Copiar ficheiros</h3>
+<p>Regressa à pasta principal, copia o ficheiro e confirma:</p>
+<pre>cd ..
+copy Documentos\trabalho.txt Backup
+dir Backup</pre>
+<div class="question"><label>1. Qual foi o comando utilizado para copiar o ficheiro?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>2. O ficheiro original continua na pasta Documentos?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>3. Em que pasta ficou a cópia?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+
+<h3>Tarefa 5 – Mover ficheiros</h3>
+<p>Move o ficheiro <code>notas.txt</code> de Documentos para Imagens:</p>
+<pre>move Documentos\notas.txt Imagens
+dir Documentos
+dir Imagens</pre>
+<div class="question"><label>1. Qual é a diferença entre copiar e mover um ficheiro?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>2. O ficheiro <code>notas.txt</code> continua na pasta Documentos?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>3. Em que pasta se encontra agora?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+
+<h3>Tarefa 6 – Alterar o nome de um ficheiro</h3>
+<p>Altera o nome de <code>disciplina.txt</code> para <code>informatica.txt</code> e confirma:</p>
+<pre>ren Documentos\disciplina.txt informatica.txt
+dir Documentos</pre>
+<div class="question"><label>1. Que comando utilizaste para mudar o nome?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>2. O conteúdo do ficheiro foi alterado?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>3. Qual é o novo nome do ficheiro?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+
+<h3>Tarefa 7 – Eliminar ficheiros e pastas</h3>
+<p>Elimina a cópia de segurança, cria uma pasta temporária e elimina-a:</p>
+<pre>del Backup\trabalho.txt
+dir Backup
+mkdir Temporaria
+rmdir Temporaria
+dir</pre>
+<div class="warning"><strong>Atenção!</strong> Antes de utilizares <code>del</code> ou <code>rmdir</code>, confirma sempre o caminho. Estes comandos podem eliminar dados sem os colocar na Reciclagem. O comando <code>rmdir</code>, sem opções adicionais, elimina apenas pastas vazias.</div>
+<div class="question"><label>1. Que comando permite eliminar um ficheiro?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>2. Que comando permite eliminar uma pasta vazia?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+<div class="question"><label>3. Qual é a diferença entre <code>del</code> e <code>rmdir</code>?</label><textarea class="short" placeholder="Escreve a tua resposta..."></textarea></div>
+
+<h2>4. Desafio final – Faz sozinho!</h2>
+<p><strong>Situação:</strong> Uma empresa pediu-te para organizares os ficheiros de um novo funcionário. Realiza as operações sem consultares os exemplos anteriores.</p>
+<div class="tree">Funcionario
+├── Pessoal
+│   ├── dados.txt
+│   └── contacto.txt
+├── Trabalho
+│   └── tarefas.txt
+└── Copias</div>
+<ol>
+<li>Criar a pasta <code>Funcionario</code> e entrar nela.</li>
+<li>Criar as subpastas <code>Pessoal</code>, <code>Trabalho</code> e <code>Copias</code>.</li>
+<li>Criar <code>dados.txt</code> e <code>contacto.txt</code> dentro de Pessoal.</li>
+<li>Criar <code>tarefas.txt</code> dentro de Trabalho.</li>
+<li>Escrever uma frase em cada ficheiro.</li>
+<li>Copiar <code>dados.txt</code> para Copias.</li>
+<li>Mover <code>contacto.txt</code> para Trabalho.</li>
+<li>Renomear <code>tarefas.txt</code> para <code>tarefas_2026.txt</code>.</li>
+<li>Apresentar a estrutura final com <code>tree /f</code>.</li>
+</ol>
+<label class="field-label">Regista os comandos que utilizaste no desafio:</label>
+<textarea class="long" placeholder="Escreve aqui os comandos, por ordem..."></textarea>
+<label class="field-label" style="margin-top:12px">O desafio foi concluído?</label>
+<textarea class="short" placeholder="Indica se concluíste e se tiveste dificuldades."></textarea>
+
+<h2>5. Registo de aprendizagem</h2>
+<p>Completa a tabela, explicando por palavras tuas para que serve cada comando.</p>
+<table><thead><tr><th style="width:22%">Comando</th><th>Para que serve?</th></tr></thead><tbody>
+<tr><td><code>dir</code></td><td><textarea class="short" aria-label="Função de dir"></textarea></td></tr>
+<tr><td><code>cd</code></td><td><textarea class="short" aria-label="Função de cd"></textarea></td></tr>
+<tr><td><code>mkdir</code></td><td><textarea class="short" aria-label="Função de mkdir"></textarea></td></tr>
+<tr><td><code>echo</code></td><td><textarea class="short" aria-label="Função de echo"></textarea></td></tr>
+<tr><td><code>type</code></td><td><textarea class="short" aria-label="Função de type"></textarea></td></tr>
+<tr><td><code>copy</code></td><td><textarea class="short" aria-label="Função de copy"></textarea></td></tr>
+<tr><td><code>move</code></td><td><textarea class="short" aria-label="Função de move"></textarea></td></tr>
+<tr><td><code>ren</code></td><td><textarea class="short" aria-label="Função de ren"></textarea></td></tr>
+<tr><td><code>del</code></td><td><textarea class="short" aria-label="Função de del"></textarea></td></tr>
+<tr><td><code>rmdir</code></td><td><textarea class="short" aria-label="Função de rmdir"></textarea></td></tr>
+</tbody></table>
+
+<h2>6. Evidências do trabalho</h2>
+<p>Assinala as evidências que vais entregar à professora:</p>
+<ul class="checks">
+<li><label><input type="checkbox">Captura de ecrã da criação das pastas.</label></li>
+<li><label><input type="checkbox">Captura de ecrã dos ficheiros criados.</label></li>
+<li><label><input type="checkbox">Captura de ecrã da operação de cópia e movimentação.</label></li>
+<li><label><input type="checkbox">Captura de ecrã da estrutura final apresentada pelo comando <code>tree /f</code>.</label></li>
+<li><label><input type="checkbox">Respostas às questões das tarefas.</label></li>
+</ul>
+<label class="field-label">Observações / nome dos ficheiros de evidência:</label>
+<textarea class="short" placeholder="Indica aqui as evidências entregues..."></textarea>
+
+<h2>7. Grelha de avaliação – Preenchimento pela professora</h2>
+<p class="small">Introduz a classificação atribuída em cada critério. O total é calculado automaticamente. A cotação máxima de cada critério está indicada.</p>
+<table id="rubrica"><thead><tr><th>Critérios de avaliação</th><th style="width:19%">Cotação máxima</th><th style="width:25%">Classificação atribuída</th></tr></thead>
+<tbody>
+<tr><td>Criação correta das pastas</td><td>4 valores</td><td><input class="score-input score" type="number" min="0" max="4" step="0.5" value="0" aria-label="Classificação criação de pastas"></td></tr>
+<tr><td>Navegação entre diretórios</td><td>3 valores</td><td><input class="score-input score" type="number" min="0" max="3" step="0.5" value="0" aria-label="Classificação navegação"></td></tr>
+<tr><td>Criação e consulta de ficheiros</td><td>3 valores</td><td><input class="score-input score" type="number" min="0" max="3" step="0.5" value="0" aria-label="Classificação ficheiros"></td></tr>
+<tr><td>Cópia e movimentação</td><td>4 valores</td><td><input class="score-input score" type="number" min="0" max="4" step="0.5" value="0" aria-label="Classificação cópia e movimentação"></td></tr>
+<tr><td>Renomeação e eliminação</td><td>3 valores</td><td><input class="score-input score" type="number" min="0" max="3" step="0.5" value="0" aria-label="Classificação renomeação e eliminação"></td></tr>
+<tr><td>Organização e evidências</td><td>3 valores</td><td><input class="score-input score" type="number" min="0" max="3" step="0.5" value="0" aria-label="Classificação organização e evidências"></td></tr>
+</tbody></table>
+
+
+<h2>8. Reflexão final</h2>
+<div class="question"><label>O que aprendeste com esta atividade?</label><textarea class="long" placeholder="Escreve a tua reflexão..."></textarea></div>
+<div class="question"><label>Que comando consideraste mais fácil e qual foi o mais difícil de utilizar?</label><textarea class="long" placeholder="Explica a tua resposta..."></textarea></div>
+<div class="goal"><strong>Objetivo final:</strong> Deves conseguir gerir ficheiros e pastas no Windows sem utilizar o Explorador de Ficheiros, recorrendo exclusivamente à Linha de Comandos (CMD).</div>
+
+<div class="totalbox"><strong>Classificação final:</strong><span id="total" aria-live="polite">0 / 20</span><span class="small">valores</span></div>
+<label class="field-label" style="margin-top:12px">Observações da professora:</label>
+<textarea class="short" placeholder="Comentários sobre o desempenho do aluno..."></textarea>
+<div class="student" style="margin-top:18px">
+<label class="field-label">Data<input type="date"></label>
+</div>
+<div class="footer">Ficha de Trabalho – Sistemas Operativos | Windows CMD</div>
+</main>
+
+<script>
+function atualizarTotal(){
+ const campos=[...document.querySelectorAll('.score')];
+ let soma=0;
+ campos.forEach(c=>{
+   const max=Number(c.max);
+   let v=Number(c.value);
+   if(!Number.isFinite(v)) v=0;
+   v=Math.max(0,Math.min(max,v));
+   c.value=v;
+   soma+=v;
+ });
+ document.getElementById('total').textContent=(Math.round(soma*10)/10).toString().replace('.',',')+' / 20';
+}
+document.querySelectorAll('.score').forEach(c=>c.addEventListener('input',atualizarTotal));
+function limparFicha(){
+ if(!confirm('Tens a certeza de que pretendes apagar todas as respostas e classificações?')) return;
+ document.querySelectorAll('textarea,input[type="text"],input[type="date"]').forEach(el=>el.value='');
+ document.querySelectorAll('input[type="checkbox"]').forEach(el=>el.checked=false);
+ document.querySelectorAll('.score').forEach(el=>el.value=0);
+ atualizarTotal();
+}
+atualizarTotal();
+</script>
+</body>
+</html>
